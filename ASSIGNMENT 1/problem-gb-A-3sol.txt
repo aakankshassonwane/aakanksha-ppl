@@ -1,0 +1,48 @@
+---------
+A-3 Loops
+---------
+
+        Compile the following program (file A-3.c) and observe the dumps.
+
+	Source file : A-3.c
+	Compilation : gcc-4.7.2 -c -fdump-tree-cfg A-3.c
+	View result : vi -O A-3.c A-3.c.*.cfg
+	Clear dumps : rm -f A-3.c.* A-3.o
+
+Program
+-------
+
+        int main()
+        {
+    	    int sum = 0;
+    	    int i, j;
+    
+    	    while(sum < 100) {
+    		    sum = sum * 2;
+    	    }
+    
+    	    for(i=0; i<25; i++) {
+    		    for(j=0; j<50; j++) {
+    			    sum = sum + i*j;
+    		    }
+    	    }
+        }
+
+Questions
+---------
+
+        1   Identify the basic blocks that correspond  to the while loop. How is
+            the GIMPLE for a while loop different from simple if-else jumps?
+
+        2   Identify the  basic blocks  for the nested  for-loop. You  should be
+            able  to identify  intializers, conditions  and increments  for each
+            loop as  well as  the shared  inner body.  Is there  really anything
+            special about a for-loop as compared to a while-loop?
+
+
+
+
+
+answers:
+1.the starting of while loop in gimple is by goto function and this is differ from if-else .In case of if-else goto is followed by if-else statement bt not in case of while loop.
+2.For initializers they declare on separate line while in case of increment or decrement they provide explainaion.In while loop they use only condition of if and in for loop they use condition of both i.e. if-else.
